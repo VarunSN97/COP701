@@ -1,8 +1,9 @@
-#Makefile
 CC=gcc
+CFLAGS=-I.
+DEPS = hellomake.h
 
-out:lcm.o 
-	gcc lcm.o -o out
+%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
-lcm.o : lcm.c
-	gcc -c lcm.c
+hellomake: hellomake.o hellofunc.o 
+	$(CC) -o hellomake hellomake.o hellofunc.o
