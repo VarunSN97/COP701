@@ -1,8 +1,11 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <pthread.h>
 #include "../include/calculate.c"
+
 #define PI 3.14159265358979323846
+
 
 double pi_value(int);
 
@@ -18,9 +21,11 @@ int main(int argc, char **argv)
  time =calculateTime()-time;
  fprintf(fp1,"%f \n",time);
  fclose(fp1);
+ printf("%.30lf %lf\n",result,time);
  accuracy= 100-(fabs(result-PI)/PI*100);
  fprintf(fp2,"%f \n",accuracy);
  fclose(fp2);
+ 
  }
  
  double pi_value(int n)
@@ -31,6 +36,9 @@ int main(int argc, char **argv)
 
    return result*2;
    }
+   
+  
+   
  
  
  

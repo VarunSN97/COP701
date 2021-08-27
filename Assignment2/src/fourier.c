@@ -18,6 +18,7 @@ int main(int argc, char **argv)
  time =calculateTime()-time;
  fprintf(fp1,"%f \n",time);
  fclose(fp1);
+ printf("%lf %lf \n",result,time);
  accuracy= 100-(fabs(result-PI)/PI*100);
  fprintf(fp2,"%f \n",accuracy);
  fclose(fp2);
