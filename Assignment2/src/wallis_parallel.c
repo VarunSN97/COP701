@@ -5,8 +5,8 @@
 #include <semaphore.h>
 #include "../include/calculate.c"
 
-#define num_threads 80
 
+int num_threads;
 int n;
 double result=1;
 sem_t sem;
@@ -17,7 +17,10 @@ int main(int argc, char** argv)
  pthread_t *threads;
  n=atoi(argv[1]);
  sem_init(&sem,0,1);
+ FILE *fp=fopen("thread_vs_performance_(wallis).txt","a");
  double time;
+ for(num_threads=1;num_threads<250;num_threads++)
+ {
  threads=(pthread_t*)malloc(num_threads*sizeof(pthread_t));
  time =calculateTime();
  for(int i=0;i<num_threads;i++)
@@ -27,8 +30,11 @@ int main(int argc, char** argv)
    pthread_join(threads[i],NULL);
    
    time=calculateTime()-time;
+   fprintf(fp,"%d %lf\n",num_threads,time);
+   free(threads);
+   }
    result=result*2;
-   printf("%lf %lf\n",result,time);
+   //printf("%.20lf %lf\n",result,time);
    }
    
    void *parallel_calculation(void *args)
