@@ -1,0 +1,39 @@
+					Assignment 3
+
+Task Accomplished
+
+->User level thread creation
+->User level thread switching
+->User level thread lock creation
+
+Functions Implemented
+
+
+->mythread_create
+->mythread_exit
+->mythread_cancel
+->mythread_yield
+->mythread_self
+->mythread_join
+->mythread_switch
+
+Extra functions
+
+->handler		handles timing interrupts
+->scheduler		schedules thread
+->set_lock
+->release_lock
+->wrapper		runs the code for a given thread that has been given as input to the 				thread
+
+
+ucontext is used to manage context of different processes. It takes in account the context which includes stacksize , stack pointer, link.
+It has four functions
+->swap_context()
+ It swaps the context of the two given processes and resumes the program.
+->getcontext
+ it is initializes the context
+ -> makecontext()
+ it creates a context on basis of the input function.
+ ->setcontext()
+ restores the context pointed out by the context pointer.
+  
